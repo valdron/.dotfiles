@@ -1,3 +1,3 @@
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  XKB_DEFAULT_LAYOUT=de exec sway
+  _JAVA_AWT_WM_NONREPARENTING=1 XKB_DEFAULT_LAYOUT=de exec sway
 fi
