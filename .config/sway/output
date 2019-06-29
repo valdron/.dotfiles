@@ -1,0 +1,4 @@
+# Desktop outputs
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output DP-1 pos 0 0 res 1920x1080
+output DVI-I-1 pos 1920 0 res 1920x1080
