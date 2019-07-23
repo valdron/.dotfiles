@@ -12,7 +12,9 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite' 
-set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse -1 | xargs -r swaymsg -t command exec'"
+set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
+# Kill processes
+bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
 for_window [app_id="^launcher$"] floating enable, border none
 
 font pango:Input Mono 14
