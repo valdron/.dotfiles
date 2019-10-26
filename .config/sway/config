@@ -7,6 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term termite
 # Your preferred application launcher
@@ -17,30 +18,27 @@ set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 
 bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
 for_window [app_id="^launcher$"] floating enable, border none
 
+set $term termite
+set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse -1 | xargs -r swaymsg -t command exec'"
+for_window [app_id="^launcher$"] floating enable, border none
 font pango:Input Mono 14
+
 ### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 include ~/.config/sway/config.d/output
 ### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 include ~/.config/sway/config.d/input
 input * xkb_layout "de,us"
+
 ### Key bindings
 #
 # Basics:
@@ -66,7 +64,8 @@ input * xkb_layout "de,us"
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-bindsym Print exec grim -g \"$(slurp)\" 
+    # screenshot
+    bindsym Print exec grim -g \"$(slurp)" $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 default_border pixel 1
 #
 # Moving around:
