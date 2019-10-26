@@ -12,5 +12,6 @@ export BEMENU_BACKEND=wayland
 
 #ALIAS
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ls=exa
+alias ls='echo use exa'
+alias find='echo use fd'
 config config status.showUntrackedFiles no

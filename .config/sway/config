@@ -7,9 +7,16 @@ set $left h
 set $down j
 set $up k
 set $right l
-#########################
-##### MAIN CONFIG #######
-#########################
+
+# Your preferred terminal emulator
+set $term termite
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+# set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite' 
+set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
+# Kill processes
+bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
+for_window [app_id="^launcher$"] floating enable, border none
 
 set $term termite
 set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse -1 | xargs -r swaymsg -t command exec'"
@@ -17,11 +24,10 @@ for_window [app_id="^launcher$"] floating enable, border none
 font pango:Input Mono 14
 
 ### Output configuration
-include $HOME/.config/sway/output
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output DP-1 pos 0 0 res 1920x1080
-# output DVI-I-1 pos 1920 0 res 1920x1080
-
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+include ~/.config/sway/config.d/output
 ### Idle configuration
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
@@ -30,6 +36,7 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
+include ~/.config/sway/config.d/input
 input * xkb_layout "de,us"
 
 ### Key bindings
