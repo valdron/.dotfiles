@@ -1,8 +1,10 @@
+config fetch --dry-run https://github.com/valdron/.dotfiles.git master
 # ZSH CONF
 fpath+=~/.zfunc
 autoload -Uz compinit promptinit
 compinit
 promptinit
+export PATH=/home/paul/.cargo/bin/:$PATH
 
 # GPG_AGENT Conf
 GPG_TTY=$(tty)
@@ -26,6 +28,11 @@ export MOZ_WEBRENDER=1
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='echo use exa'
 alias find='echo use fd'
+alias grep='echo use rg'
+alias egrep='echo use rg'
+alias cat='echo use bat'
+alias ls='echo use exa'
+
 config config status.showUntrackedFiles no
 
 # OH_MY_ZSH CONFIG
