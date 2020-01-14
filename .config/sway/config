@@ -12,12 +12,17 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite' 
-set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
+set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -L -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
 # Kill processes
 bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
 for_window [app_id="^launcher$"] floating enable, border none
-
+for_window [window_role="PictureInPicture"] floating enable
 font pango:Input Mono 14
+# PoE shortcuts
+#
+bindsym F4 exec /usr/bin/zsh -c "sudo /home/paul/poe_script.sh"
+bindsym F6 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 h i d e o u t ENTER"
+bindsym F3 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 e x i t ENTER"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -66,7 +71,7 @@ input * xkb_layout "de,us"
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-bindsym Print exec grim -g \"$(slurp)" 
+bindsym Print exec zsh -c 'grim -g "$(slurp)" ~/Pictures/screenshot_$(date -Is).png'
 default_border pixel 1
 #
 # Moving around:

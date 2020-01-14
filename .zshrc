@@ -25,9 +25,32 @@ export MOZ_WEBRENDER=1
 #ALIAS
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='echo use exa'
+alias l='exa -la'
 alias find='echo use fd'
+alias e='vim `fzf`'
+alias p='swaymsg exec zathura `fd -e pdf | fzf`'
+alias c='cd `fd -t d | fzf`'
+
 config config status.showUntrackedFiles no
 
+# Functions
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi  
+    rm -f -- "$tempfile"
+}
+
+function termite-cd {
+	/usr/bin/termite &
+	disown %/usr/bin/termite
+}
+
+bindkey -s '^T' 'termite-cd\n'
+bindkey -s '^O' 'ranger-cd\n'
 # OH_MY_ZSH CONFIG
 ZSH=/usr/share/oh-my-zsh/
 
