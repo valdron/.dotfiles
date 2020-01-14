@@ -1,4 +1,3 @@
-config fetch --dry-run https://github.com/valdron/.dotfiles.git master
 # ZSH CONF
 fpath+=~/.zfunc
 autoload -Uz compinit promptinit
