@@ -1,8 +1,10 @@
+config fetch --dry-run https://github.com/valdron/.dotfiles.git master
 # ZSH CONF
 fpath+=~/.zfunc
 autoload -Uz compinit promptinit
 compinit
 promptinit
+export PATH=/home/paul/.cargo/bin/:$PATH
 
 # GPG_AGENT Conf
 GPG_TTY=$(tty)
@@ -30,6 +32,7 @@ alias find='echo use fd'
 alias e='vim `fzf`'
 alias p='swaymsg exec zathura `fd -e pdf | fzf`'
 alias c='cd `fd -t d | fzf`'
+alias cat='echo use bat'
 
 config config status.showUntrackedFiles no
 

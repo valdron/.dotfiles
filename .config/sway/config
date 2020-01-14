@@ -7,6 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term termite
 # Your preferred application launcher
@@ -23,29 +24,24 @@ font pango:Input Mono 14
 bindsym F4 exec /usr/bin/zsh -c "sudo /home/paul/poe_script.sh"
 bindsym F6 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 h i d e o u t ENTER"
 bindsym F3 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 e x i t ENTER"
+
+
 ### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 include ~/.config/sway/config.d/output
 ### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 include ~/.config/sway/config.d/input
 input * xkb_layout "de,us"
+
 ### Key bindings
 #
 # Basics:
