@@ -49,6 +49,7 @@ augroup END
 if has('syntax') && has('eval')
   packadd! matchit
 endif
+set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
 set relativenumber
 set number
@@ -64,7 +65,7 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %=\ Line:\ %l;%c\
 set laststatus=2
 hi LineNr cterm=bold ctermfg=White ctermbg=DarkGray
 filetype plugin on
-let g:syntastic_rust_checkers = ['rustc']
+let g:syntastic_rust_checkers = []
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -75,3 +76,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:rustfmt_autosave = 1
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['ra_lsp_server'],
+\ }
+
