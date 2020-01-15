@@ -40,6 +40,10 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
 " Add optional packages.
 "
 " The matchit plugin makes the % command work better, but it is not backwards
@@ -51,7 +55,7 @@ if has('syntax') && has('eval')
 endif
 set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
-set relativenumber
+" set relativenumber
 set number
 set ruler
 set cursorline
@@ -63,7 +67,7 @@ map j gj
 map k gk
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %=\ Line:\ %l;%c\ 
 set laststatus=2
-hi LineNr cterm=bold ctermfg=White ctermbg=DarkGray
+hi LineNr cterm=bold 
 filetype plugin on
 let g:syntastic_rust_checkers = []
 
@@ -75,8 +79,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:rustfmt_options = '--edition 2018'
 let g:rustfmt_autosave = 1
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['ra_lsp_server'],
 \ }
 
+let g:syntastic_tex_checkers = ['lacheck']

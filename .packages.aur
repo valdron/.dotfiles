@@ -1,11 +1,19 @@
-discord 0.0.9-1
-oh-my-zsh-git r5189.17f4cfca9-1
-pcmciautils 018-8
-postman-bin 6.0.10-1
-redshift-wayland-git 1.11.r158.gab3a34c-2
-signal 1.25.3-1
-ttf-input 20170404-1
-vim-rust-git r511.6d6c410-1
-vim-youcompleteme-git r2525.59eea79d-1
-visual-studio-code-bin 1.23.1-1
-yay 9.2.0-1
+dma
+ghidra-bin
+hopper
+ion-git
+linux-amd-staging-drm-next-git
+linux-amd-staging-drm-next-git-docs
+linux-amd-staging-drm-next-git-headers
+memtest86-efi
+mininet
+oh-my-zsh-git
+postman-bin
+redshift-wlr-gamma-control-git
+texlive-tikz-uml
+ttf-input
+vim-rust-git
+wofi-hg
+xml2rfc
+yay
+ydotool-git
