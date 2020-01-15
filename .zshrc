@@ -15,13 +15,6 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 fi
 
-# ENV_VARS
-## WAYLAND specific conf
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
-export _JAVA_AWT_WM_NONREPARENTIN=1
-
-export MOZ_WEBRENDER=1
 
 #ALIAS
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -32,6 +25,19 @@ alias e='vim `fd --hidden | fzf --reverse -m --preview="bat --color=always --dec
 alias p='swaymsg exec zathura `fd -e pdf | fzf`'
 alias c='cd `fd -t d | fzf --preview="exa -la --color=always {}"`'
 alias cat='echo use bat'
+
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(bat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(bat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+
+bindkey -s '^O' 'ranger-cd\n'
 
 config config status.showUntrackedFiles no
 

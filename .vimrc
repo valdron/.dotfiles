@@ -53,6 +53,7 @@ call plug#end()
 if has('syntax') && has('eval')
   packadd! matchit
 endif
+set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
 " set relativenumber
 set number
@@ -80,4 +81,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:rustfmt_options = '--edition 2018'
 let g:rustfmt_autosave = 1
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['ra_lsp_server'],
+\ }
+
 let g:syntastic_tex_checkers = ['lacheck']
