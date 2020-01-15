@@ -26,6 +26,9 @@ alias p='swaymsg exec zathura `fd -e pdf | fzf`'
 alias c='cd `fd -t d | fzf --preview="exa -la --color=always {}"`'
 alias cat='echo use bat'
 
+# check for dirty config files
+config status
+
 function ranger-cd {
     tempfile="$(mktemp -t tmp.XXXXXX)"
     /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
