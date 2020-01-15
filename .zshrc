@@ -28,9 +28,9 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='echo use exa'
 alias l='exa -la'
 alias find='echo use fd'
-alias e='vim `fzf`'
+alias e='vim `fd --hidden | fzf --reverse -m --preview="bat --color=always --decorations=always {}"`'
 alias p='swaymsg exec zathura `fd -e pdf | fzf`'
-alias c='cd `fd -t d | fzf`'
+alias c='cd `fd -t d | fzf --preview="exa -la --color=always {}"`'
 alias cat='echo use bat'
 
 config config status.showUntrackedFiles no
