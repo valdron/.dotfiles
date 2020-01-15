@@ -85,4 +85,5 @@ let g:LanguageClient_serverCommands = {
 \ 'rust': ['ra_lsp_server'],
 \ }
 
+let g:autopep8_on_save = 1
 let g:syntastic_tex_checkers = ['lacheck']
