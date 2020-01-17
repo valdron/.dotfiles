@@ -58,6 +58,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 " set relativenumber
 set number
 set ruler
+set cc=80
 set cursorline
 noremap <Up>       :echoerr "Use k instead!"<CR>$
 noremap <Down>     :echoerr "Use j instead!"<CR>$
