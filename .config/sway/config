@@ -8,17 +8,13 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
-set $term termite
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
-# set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite' 
-set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -L -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
+set $term kitty
+set $menu exec kitty --class launcher -o background=white -o foreground=black zsh -c 'echo -n $PATH | xargs -d : fd -L -t x . | sort -u | fzf --reverse | xargs swaymsg exec'
 # Kill processes
-bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
+bindsym $mod+q exec kitty --class launcher -o background=white -o foreground=black zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'
 for_window [app_id="^launcher$"] floating enable, border none
 for_window [window_role="PictureInPicture"] floating enable
-font pango:Input Mono 14
+font pango:Fira Code 14
 # PoE shortcuts
 #
 bindsym F4 exec /usr/bin/zsh -c "sudo /home/paul/poe_script.sh"

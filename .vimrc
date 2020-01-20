@@ -18,6 +18,10 @@ endif
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
+if &shell =~# 'fish$'
+    set shell=zsh
+endif
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -43,6 +47,7 @@ augroup END
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dag/vim-fish'
 call plug#end()
 " Add optional packages.
 "
