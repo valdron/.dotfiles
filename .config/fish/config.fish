@@ -4,6 +4,7 @@ set -x PATH $PATH /home/paul/.cargo/bin
 # GPG AGENT
 set -x GPG_TTY (tty)
 gpgconf --launch gpg-agent
+gpg-connect-agent updatestartuptty /bye
 
 # Ensure that GPG Agent is used as the SSH agent
 set -e SSH_AUTH_SOCK
