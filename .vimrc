@@ -60,6 +60,7 @@ set number
 set ruler
 set cc=80
 set cursorline
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 noremap <Up>       :echoerr "Use k instead!"<CR>$
 noremap <Down>     :echoerr "Use j instead!"<CR>$
 noremap <Left>     :echoerr "Use l instead!"<CR>$
