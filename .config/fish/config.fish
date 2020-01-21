@@ -22,6 +22,11 @@ set -U FZF_ENABLE_OPEN_PREVIEW 1
 set -U FZF_CD_WITH_HIDDEN_OPTS '--preview="$FZF_PREVIEW_DIR_CMD {}"'
 set -U FZF_CD_OPTS '--preview="$FZF_PREVIEW_DIR_CMD {}"'
 
+# wayland functions
+set -U -x MOZ_ENABLE_WAYLAND 1
+set -U -x MOZ_WEBRENDER 1
+set -U -x QT_QPA_PLATFORM wayland
+set -U -x _JAVA_AWT_WM_NONREPARENTING 1
 
 abbr -a -g c dotfiles_git 
 abbr -a -g l exa -la
