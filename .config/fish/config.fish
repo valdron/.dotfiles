@@ -16,6 +16,13 @@ abbr -a -g e edit_file_fzf
 abbr -a -g p open_pdf_fzf
 abbr -a -g c cd_fzf
 
+# Git Abbrevations
+abbr -a -g gc git commit 
+abbr -a -g gco git checkout 
+abbr -a -g ga git add
+abbr -a -g g git
+
+
 dotfiles_git config status.showUntrackedFiles no
 dotfiles_git status
 
