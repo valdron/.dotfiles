@@ -4,7 +4,7 @@ set -x PATH $PATH /home/paul/.cargo/bin
 # GPG AGENT
 set -x GPG_TTY (tty)
 gpgconf --launch gpg-agent
-gpg-connect-agent updatestartuptty /bye
+gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 # Ensure that GPG Agent is used as the SSH agent
 set -e SSH_AUTH_SOCK
@@ -23,9 +23,10 @@ abbr -a -g ga git add
 abbr -a -g g git
 
 
-dotfiles_git config status.showUntrackedFiles no
-dotfiles_git status
-
+if status is-interactive
+    dotfiles_git config status.showUntrackedFiles no
+    dotfiles_git status
+end
 
 if status is-login
     if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
