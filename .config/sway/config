@@ -9,9 +9,9 @@ set $up k
 set $right l
 
 set $term kitty
-set $menu exec kitty --class launcher -o background=white -o foreground=black zsh -c 'echo -n $PATH | xargs -d : fd -L -t x . | sort -u | fzf --reverse | xargs swaymsg exec'
+set $menu exec termite --name=launcher -c ~/.config/termite/launcher -e "zsh -c 'echo -n $PATH | xargs -d : fd -L -t x . | sort -u | fzf --reverse | xargs swaymsg exec'"
 # Kill processes
-bindsym $mod+q exec kitty --class launcher -o background=white -o foreground=black zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'
+bindsym $mod+q exec termite --name=launcher -e "zsh -c 'ps -U $USER -u $USER -o pid,uname,time,cmd | fzf --reverse --header-lines=1 -m --preview-window=right:50%:wrap | awk \"{ print $1 }\" | xargs kill -9'"
 for_window [app_id="^launcher$"] floating enable, border none
 for_window [window_role="PictureInPicture"] floating enable
 font pango:Fira Code 14
