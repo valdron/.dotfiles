@@ -39,7 +39,10 @@ abbr -a -g gco git checkout
 abbr -a -g ga git add
 abbr -a -g g git
 
-source $HOME/.config/fish/conf.d/*
+for f in $HOME/.config/fish/conf.d/*
+    source f
+end
+
 if status is-interactive
     dotfiles_git config status.showUntrackedFiles no
     dotfiles_git status
