@@ -40,7 +40,7 @@ abbr -a -g ga git add
 abbr -a -g g git
 
 for f in $HOME/.config/fish/conf.d/*
-    source f
+    source $f
 end
 
 if status is-interactive
