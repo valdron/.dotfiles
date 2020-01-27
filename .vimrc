@@ -48,6 +48,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dag/vim-fish'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 call plug#end()
 " Add optional packages.
 "
@@ -58,7 +65,6 @@ call plug#end()
 if has('syntax') && has('eval')
   packadd! matchit
 endif
-set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
 " set relativenumber
 set number
@@ -76,16 +82,7 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ %=\ Line:\ %l;%c\
 set laststatus=2
 hi LineNr cterm=bold 
 filetype plugin on
-let g:syntastic_rust_checkers = []
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 let g:rustfmt_options = '--edition 2018'
 let g:rustfmt_autosave = 1
 let g:LanguageClient_serverCommands = {
@@ -93,4 +90,12 @@ let g:LanguageClient_serverCommands = {
 \ }
 
 let g:autopep8_on_save = 1
-let g:syntastic_tex_checkers = ['lacheck']
+let g:deoplete#enable_at_startup = 1
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
