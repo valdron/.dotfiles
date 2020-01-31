@@ -32,6 +32,8 @@ abbr -a -g c dotfiles_git
 abbr -a -g l exa -la
 abbr -a -g v vim
 abbr -a -g z zathura
+abbr -a -g sc systemctl
+abbr -a -g scr systemctl restart
 
 # Git Abbrevations
 abbr -a -g gc git commit 
@@ -51,7 +53,7 @@ end
 if status is-login
     fisher
     if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
-        set -x XKB_DEFAULT_LAYOUT=de 
+        set -x XKB_DEFAULT_LAYOUT de 
         exec sway
     end
 end
