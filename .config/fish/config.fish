@@ -54,7 +54,7 @@ if status is-interactive
 end
 
 if status is-login
-    fisher
+    fisher ls | diff - $HOME/.config/fish/fishfile || fisher
     if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
         set -x XKB_DEFAULT_LAYOUT de 
         exec sway
