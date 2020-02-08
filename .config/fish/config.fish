@@ -36,6 +36,7 @@ abbr -a -g sc systemctl
 abbr -a -g scr systemctl restart
 abbr -a -g ssc systemctl
 abbr -a -g sscr systemctl restart
+abbr -a -g spm sudo pacman
 
 # Git Abbrevations
 abbr -a -g gc git commit 
