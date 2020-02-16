@@ -39,6 +39,7 @@ bindsym $mod+alt+l exec swaylock -f -c 000000 -s center -i ~/.config/sway/lock.p
 ### Input configuration
 include ~/.config/sway/config.d/input
 input * xkb_layout "de,us"
+input * xkb_options caps:escape
 
 ### Key bindings
 #
