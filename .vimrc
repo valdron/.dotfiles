@@ -48,13 +48,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dag/vim-fish'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'lervag/vimtex'
 call plug#end()
 " Add optional packages.
 "
@@ -83,6 +79,9 @@ set laststatus=2
 hi LineNr cterm=bold 
 filetype plugin on
 
+let g:vimtex_view_method = 'zathura'
+let mapleader =","
+let maplocalleader =","
 let g:rustfmt_options = '--edition 2018'
 let g:rustfmt_autosave = 1
 let g:LanguageClient_serverCommands = {
@@ -90,7 +89,6 @@ let g:LanguageClient_serverCommands = {
 \ }
 
 let g:autopep8_on_save = 1
-let g:deoplete#enable_at_startup = 1
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
     return "\<C-N>"
