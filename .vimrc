@@ -31,6 +31,14 @@ set laststatus=2
 hi LineNr cterm=bold 
 filetype plugin on
 
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_latexlog = {
+      \ 'packages' : {
+      \   'biblatex' : 0,
+      \ },
+      \}
+let mapleader =","
+let maplocalleader =","
 let g:rustfmt_options = '--edition 2018'
 let g:rustfmt_autosave = 1
 

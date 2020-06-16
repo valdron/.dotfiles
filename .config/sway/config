@@ -21,6 +21,8 @@ bindsym F4 exec /usr/bin/zsh -c "sudo /home/paul/poe_script.sh"
 bindsym F6 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 h i d e o u t ENTER"
 bindsym F3 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 e x i t ENTER"
 
+exec mako
+
 
 ### Output configuration
 set $lock_img ~/.config/sway/lock.png
