@@ -1,5 +1,6 @@
 # PATH
 set -x PATH $PATH /home/paul/.cargo/bin
+set -x EDITOR vim
 
 # GPG AGENT
 set -x GPG_TTY (tty)
