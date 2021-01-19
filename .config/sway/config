@@ -21,6 +21,9 @@ bindsym F4 exec /usr/bin/zsh -c "sudo /home/paul/poe_script.sh"
 bindsym F6 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 h i d e o u t ENTER"
 bindsym F3 exec /usr/bin/zsh -c "ydotool key ENTER Shift+7 e x i t ENTER"
 
+bindsym --whole-window --no-repeat --release button9 exec xdotool mouseup 9
+bindsym --whole-window --no-repeat button9 exec xdotool mousedown 9
+
 exec mako
 
 

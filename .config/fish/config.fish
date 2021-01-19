@@ -24,6 +24,7 @@ set -U FZF_CD_WITH_HIDDEN_OPTS '--preview="$FZF_PREVIEW_DIR_CMD {}"'
 set -U FZF_CD_OPTS '--preview="$FZF_PREVIEW_DIR_CMD {}"'
 
 # wayland functions
+set -U -x XDG_CURRENT_DESKTOP sway
 set -U -x MOZ_ENABLE_WAYLAND 1
 set -U -x MOZ_WEBRENDER 1
 set -U -x QT_QPA_PLATFORM wayland
