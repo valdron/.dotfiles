@@ -28,18 +28,16 @@ exec mako
 
 
 ### Output configuration
-set $lock_img ~/.config/sway/lock.png
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 include ~/.config/sway/config.d/output
 ### Idle configuration
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000 -s center -i ~/.config/sway/lock.png' \
+         timeout 300 '~/.config/sway/lock.sh' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000 -s center -i ~/.config/sway/lock.png'
-bindsym $mod+alt+l exec swaylock -f -c 000000 -s center -i ~/.config/sway/lock.png
+         before-sleep '~/.config/sway/lock.sh'
+bindsym $mod+alt+l exec ~/.config/sway/lock.sh
 
 ### Input configuration
 include ~/.config/sway/config.d/input
